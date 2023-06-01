@@ -2,41 +2,28 @@ import { FC, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "../../store/hooks/storeHook";
 import { setProductParam } from "../../store/reducers/app/app.slice";
-import { Line } from "@ant-design/charts";
+import { Box } from "@mui/material";
+import TotalPie from "../../components/TotalPie/TotalPie";
+import DayRange from "../../components/DayRange/DayRange";
 
 const Dashboard: FC = () => {
   const { product } = useParams();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    if (!product) {
+      dispatch(setProductParam("cajita"));
+      return;
+    }
     dispatch(setProductParam(product));
   }, [product]);
 
-
-
-  const data = [
-    { year: "1991", value: 3 },
-    { year: "1992", value: 4 },
-    { year: "1993", value: 3.5 },
-    { year: "1994", value: 5 },
-    { year: "1995", value: 4.9 },
-    { year: "1996", value: 6 },
-    { year: "1997", value: 7 },
-    { year: "1998", value: 9 },
-    { year: "1999", value: 13 },
-  ];
-
-  const config = {
-    data,
-    height: 400,
-    xField: "year",
-    yField: "value",
-    point: {
-      size: 5,
-      shape: "diamond",
-    },
-  };
-  return <Line {...config} />;
+  return (
+    <Box sx={{ padding: "2%", display: "flex", gap: "20px", width: "100%" }}>
+      <TotalPie />
+      <DayRange />
+    </Box>
+  );
 };
 
 export default Dashboard;

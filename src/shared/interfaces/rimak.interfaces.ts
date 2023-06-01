@@ -1,14 +1,17 @@
 export interface IRimak {
-  indicator: IIndicator[];
-  product: string;
-  sentiment: string;
-  sentimentPercentage: number;
-  comment: string;
-  createdAt: number;
-  client: string;
+  _id: ID;
+  sentiments: ISentiment[];
 }
 
-export interface IIndicator {
-  question: string;
-  value: number;
+export interface ID {
+  day: number;
+  month: number;
+  year: number;
+  product: string;
+}
+
+export interface ISentiment {
+  sentiment: string;
+  count: number;
+  [k: string]: any;
 }
