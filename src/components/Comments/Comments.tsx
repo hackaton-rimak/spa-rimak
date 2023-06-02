@@ -2,7 +2,7 @@ import React from "react";
 import ChartWrapper from "../ChartWrapper/ChartWrapper";
 import { useAppSelector } from "../../store/hooks/storeHook";
 import { RootState } from "../../store/store";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const Comments: React.FC = () => {
   const { data } = useAppSelector((state: RootState) => state.app);
@@ -32,11 +32,13 @@ const Comments: React.FC = () => {
 
   return (
     <ChartWrapper width={"100%"}>
-      {commentsList().map((comment) => (
-        <Typography color={getRandomColor()} fontWeight={"500"}>
-          {comment}
-        </Typography>
-      ))}
+      <Box sx={{ overflow: "hidden", height: "100%" }}>
+        {commentsList().map((comment) => (
+          <Typography color={getRandomColor()} fontWeight={"500"}>
+            {comment}
+          </Typography>
+        ))}
+      </Box>
     </ChartWrapper>
   );
 };

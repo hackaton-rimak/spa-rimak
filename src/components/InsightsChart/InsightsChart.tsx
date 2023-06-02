@@ -31,7 +31,7 @@ const InsightsChart: React.FC = () => {
             color={"primary.main"}
             sx={{ mb: "20px", fontWeight: "500" }}
           >
-            {index + 1}. {item._id}
+            {item._id}
           </Typography>
           <ChartWrapper width={"100%"}>
             <Column

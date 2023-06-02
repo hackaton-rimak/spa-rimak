@@ -8,8 +8,6 @@ import { parseDayRange } from "../../shared/util/parseData";
 const DayRange: React.FC = () => {
   const { data } = useAppSelector((state: RootState) => state.app);
 
-  console.log("AAA", parseDayRange(data));
-
   const config = {
     data: parseDayRange(data),
     xField: "month",
