@@ -15,3 +15,20 @@ export interface ISentiment {
   count: number;
   [k: string]: any;
 }
+
+export interface IInsights {
+  _id: string;
+  dates: IDateStructure[];
+}
+
+export interface IDateStructure {
+  date: IDate;
+  averageValue: number;
+  [k: string]: any;
+}
+
+export interface IDate {
+  day: number;
+  month: number;
+  year: number;
+}

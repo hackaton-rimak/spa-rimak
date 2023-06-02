@@ -1,5 +1,7 @@
 import { FC, ReactNode } from "react";
-import { Paper } from "@mui/material";
+import { Paper, Skeleton } from "@mui/material";
+import { useAppSelector } from "../../store/hooks/storeHook";
+import { RootState } from "../../store/store";
 
 type Props = {
   children: ReactNode;
@@ -7,6 +9,7 @@ type Props = {
 };
 
 const ChartWrapper: FC<Props> = ({ children, width }) => {
+  const { loadingData } = useAppSelector((state: RootState) => state.app);
   return (
     <Paper
       elevation={2}
@@ -17,7 +20,15 @@ const ChartWrapper: FC<Props> = ({ children, width }) => {
         padding: "10px",
       }}
     >
-      {children}
+      {loadingData ? (
+        <Skeleton
+          animation="wave"
+          variant="rectangular"
+          sx={{ width: "100%", height: "100%", borderRadius: "20px" }}
+        />
+      ) : (
+        children
+      )}
     </Paper>
   );
 };
