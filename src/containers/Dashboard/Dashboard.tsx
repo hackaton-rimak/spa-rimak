@@ -53,10 +53,10 @@ const Dashboard: FC = () => {
           onChange={handleChange}
         >
           <MenuItem value={""}>Ver todos</MenuItem>
-          <MenuItem value={"client1"}>Client 1</MenuItem>
-          <MenuItem value={"client2"}>Client 2</MenuItem>
-          <MenuItem value={"client3"}>Client 3</MenuItem>
-          <MenuItem value={"client4"}>Client 4</MenuItem>
+          <MenuItem value={"Cristopher"}>Laika</MenuItem>
+          <MenuItem value={"Martin"}>Vivri</MenuItem>
+          <MenuItem value={"Brayan"}>Préstamo Feliz</MenuItem>
+          <MenuItem value={"Dave"}>Wallmart</MenuItem>
         </Select>
       </Box>
       <DayRange />
