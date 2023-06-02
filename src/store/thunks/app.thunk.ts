@@ -5,6 +5,7 @@ import axios from "axios";
 export interface IRimakRequest {
   product: string;
   type?: string;
+  client?: string;
 }
 export const getData = createAsyncThunk<IRimak[], IRimakRequest>(
   "app/getData",

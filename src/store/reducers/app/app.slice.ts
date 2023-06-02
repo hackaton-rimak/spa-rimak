@@ -8,6 +8,7 @@ export const appInitialState: IAppState = {
   data: [],
   dataInsights: [],
   loadingData: false,
+  client: "",
 };
 
 export const appSlice = createSlice({
@@ -41,9 +42,12 @@ export const appSlice = createSlice({
     setProductParam: (state, action) => {
       state.productParam = action.payload;
     },
+    setClient: (state, action) => {
+      state.client = action.payload;
+    },
   },
 });
 
 export default appSlice.reducer;
 
-export const { setProductParam } = appSlice.actions;
+export const { setProductParam, setClient } = appSlice.actions;

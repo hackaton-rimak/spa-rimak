@@ -7,4 +7,5 @@ export interface IAppState {
   request: IRimakRequest;
   dataInsights: IInsights[];
   loadingData: boolean;
+  client: "";
 }

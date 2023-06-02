@@ -22,7 +22,9 @@ import {
 } from "../../store/thunks/app.thunk";
 
 const Sidebar: FC = () => {
-  const { productParam } = useAppSelector((state: RootState) => state.app);
+  const { productParam, client } = useAppSelector(
+    (state: RootState) => state.app
+  );
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -33,11 +35,15 @@ const Sidebar: FC = () => {
     };
 
     if (!request.type) {
-      dispatch(getData(request));
+      let req: IRimakRequest = {
+        ...request,
+        client,
+      };
+      dispatch(getData(req));
     } else {
       dispatch(getDataInsights(request));
     }
-  }, [productParam]);
+  }, [productParam, client]);
 
   return (
     <Drawer sx={styles.drawer} variant="permanent" anchor="left">
