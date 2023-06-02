@@ -4,7 +4,7 @@ import LogoImage from "../../assets/img/hackaton-image.png";
 import { NavLink } from "react-router-dom";
 const Logo: React.FC = () => {
   return (
-    <NavLink to={"/cajita"}>
+    <NavLink to={"/kajita"}>
       <Box
         component={"img"}
         src={`${LogoImage}`}

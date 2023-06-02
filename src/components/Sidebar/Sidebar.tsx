@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import {
   Divider,
   Drawer,
@@ -13,11 +13,31 @@ import Logo from "../Logo/Logo";
 import { IProduct, products } from "../../shared/constants/products";
 import { sidebarStyles as styles } from "./Sidebar.styles";
 import { NavLink } from "react-router-dom";
-import { useAppSelector } from "../../store/hooks/storeHook";
+import { useAppDispatch, useAppSelector } from "../../store/hooks/storeHook";
 import { RootState } from "../../store/store";
+import {
+  getData,
+  getDataInsights,
+  IRimakRequest,
+} from "../../store/thunks/app.thunk";
 
 const Sidebar: FC = () => {
   const { productParam } = useAppSelector((state: RootState) => state.app);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (!productParam) return;
+    const request: IRimakRequest = {
+      product: productParam,
+      type: productParam === "insights" ? "question_average" : "",
+    };
+
+    if (!request.type) {
+      dispatch(getData(request));
+    } else {
+      dispatch(getDataInsights(request));
+    }
+  }, [productParam]);
 
   return (
     <Drawer sx={styles.drawer} variant="permanent" anchor="left">
@@ -29,7 +49,7 @@ const Sidebar: FC = () => {
         {products.map((item: IProduct) => (
           <NavLink
             key={item.name}
-            to={`/${item.name.toLowerCase()}`}
+            to={`/${item.route}`}
             style={({ isActive }) => ({
               color: isActive ? "transparent" : "transparent",
               textDecoration: "none",
