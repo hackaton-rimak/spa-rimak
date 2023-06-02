@@ -20,7 +20,7 @@ export const products: IProduct[] = [
   {
     name: "Smartlinks",
     icon: <InsertLinkIcon sx={{ color: "#ffffff" }} />,
-    route: "smartlinks",
+    route: "smartlink",
   },
   {
     name: "Insights",
